@@ -198,6 +198,30 @@ app.get('/purch-orders', async function (req, res) {
     }
 });
 
+app.get('/loyalty-tiers', async function (req, res) {
+    try {
+        // Create and execute our queries
+        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        const query1 = `
+            SELECT Loyalty_Tiers.loyalty_tier_id AS TierID, Loyalty_Tiers.tier_name AS Tier, Loyalty_Tiers.min_spend AS MinSpend, Loyalty_Tiers.discount AS Discount 
+            FROM Loyalty_Tiers;`;
+
+        const [loyalty_tiers] = await db.query(query1);
+
+        // Render the bsg-people.hbs file, and also send the renderer
+        //  an object that contains our bsg_people and bsg_homeworld information
+        res.render('loyalty-tiers', { 
+            loyalty_tiers: loyalty_tiers 
+        });
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
 // ########################################
 // ########## LISTENER
 
