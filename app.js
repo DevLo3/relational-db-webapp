@@ -127,7 +127,7 @@ app.get('/suppliers', async function (req, res) {
         // Create and execute our queries
         // In query1, we use a JOIN clause to display the names of the Customer Orders
         const query1 = `
-            SELECT Suppliers.supplier_id AS Supplier ID, Suppliers.ranch AS Name, Suppliers.country AS Country, Suppliers.rep_name AS Representative, Suppliers.rep_email AS Email, Suppliers.rep_phone AS Phone
+            SELECT Suppliers.supplier_id AS SupplierID, Suppliers.ranch AS Name, Suppliers.country AS Country, Suppliers.rep_name AS Representative, Suppliers.rep_email AS Email, Suppliers.rep_phone AS Phone
             FROM Suppliers;`;
 
         const [suppliers] = await db.query(query1);

@@ -5,7 +5,7 @@
     <thead>
         {{! For the table header row, we print the DB attribute names }}
         <tr>
-            {{#each products.[0]}}
+            {{#each suppliers.[0]}}
             <th>
                 {{@key}}
             </th>
@@ -16,7 +16,7 @@
 
     <tbody>
         {{! For each row, print the id, fname, lname, homeworld and age }}
-        {{#each products}}
+        {{#each suppliers}}
         <tr>
             <td>{{this.SupplierID}}</td>
             <td>{{this.Name}}</td>
