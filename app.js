@@ -122,6 +122,30 @@ app.get('/products', async function (req, res) {
     }
 });
 
+app.get('/suppliers', async function (req, res) {
+    try {
+        // Create and execute our queries
+        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        const query1 = `
+            SELECT Suppliers.supplier_id AS Supplier ID, Suppliers.ranch AS Name, Suppliers.country AS Country, Suppliers.rep_name AS Representative, Suppliers.rep_email AS Email, Suppliers.rep_phone AS Phone
+            FROM Suppliers;`;
+
+        const [suppliers] = await db.query(query1);
+
+        // Render the bsg-people.hbs file, and also send the renderer
+        //  an object that contains our bsg_people and bsg_homeworld information
+        res.render('suppliers', { 
+            suppliers: suppliers 
+        });
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
 // ########################################
 // ########## LISTENER
 
