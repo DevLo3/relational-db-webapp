@@ -1,0 +1,28 @@
+<h1>Product Catalogue</h1>
+
+{{! READ table }}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            {{#each products.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the id, fname, lname, homeworld and age }}
+        {{#each products}}
+        <tr>
+            <td>{{this.ProductID}}</td>
+            <td>{{this.Name}}</td>
+            <td>{{this.Description}}</td>
+            <td>{{#if this.Organic}}Yes{{else}}No{{/if}}</td>
+            <td>{{this.Supplier}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

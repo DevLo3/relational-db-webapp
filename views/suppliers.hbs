@@ -1,0 +1,30 @@
+<h1>Suppliers</h1>
+
+{{! READ table }}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            {{#each products.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the id, fname, lname, homeworld and age }}
+        {{#each products}}
+        <tr>
+            <td>{{this.SupplierID}}</td>
+            <td>{{this.Name}}</td>
+            <td>{{this.Country}}</td>
+            <td>{{this.Representative}}</td>
+            <td>{{this.Email}}</td>
+            <td>{{this.Phone}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
