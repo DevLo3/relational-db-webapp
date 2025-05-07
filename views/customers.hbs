@@ -1,29 +1,30 @@
-<h1>Suppliers</h1>
+<h1>Customers</h1>
 
 {{! READ table }}
 <table>
     <thead>
         {{! For the table header row, we print the DB attribute names }}
         <tr>
-            {{#each suppliers.[0]}}
+            {{#each customers.[0]}}
             <th>
                 {{@key}}
             </th>
             {{/each}}
-            <th></th>
         </tr>
     </thead>
 
     <tbody>
         {{! For each row, print the id, fname, lname, homeworld and age }}
-        {{#each suppliers}}
+        {{#each customers}}
         <tr>
-            <td>{{this.SupplierID}}</td>
+            <td>{{this.CustomerID}}</td>
             <td>{{this.Name}}</td>
-            <td>{{this.Country}}</td>
-            <td>{{this.Representative}}</td>
+            <td>{{this.Address}}</td>
+            <td>{{#if this.Local}}Yes{{else}}No{{/if}}</td>
+            <td>{{this.Buyer}}</td>
             <td>{{this.Email}}</td>
             <td>{{this.Phone}}</td>
+            <td>{{this.Tier}}</td>
         </tr>
         {{/each}}
     </tbody>

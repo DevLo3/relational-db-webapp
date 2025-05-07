@@ -146,6 +146,32 @@ app.get('/suppliers', async function (req, res) {
     }
 });
 
+app.get('/customers', async function (req, res) {
+    try {
+        // Create and execute our queries
+        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        const query1 = `
+            SELECT Customers.customer_id AS CustomerID, Customers.company_name AS Name, Customers.address AS Address, Customers.is_local AS Local, Customers.buyer_name AS Buyer, Customers.buyer_email AS Email, Customers.buyer_phone AS Phone, Loyalty_Tiers.tier_name AS Tier
+            FROM Customers
+            LEFT JOIN Loyalty_Tiers
+                ON Customers.loyalty_tier_id = Loyalty_Tiers.loyalty_tier_id;`;
+
+        const [customers] = await db.query(query1);
+
+        // Render the bsg-people.hbs file, and also send the renderer
+        //  an object that contains our bsg_people and bsg_homeworld information
+        res.render('customers', { 
+            customers: customers 
+        });
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
 // ########################################
 // ########## LISTENER
 
