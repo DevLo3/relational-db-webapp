@@ -32,33 +32,10 @@ app.get('/', async function (req, res) {
     }
 });
 
-app.get('/bsg-people', async function (req, res) {
-    try {
-        // Create and execute our queries
-        // In query1, we use a JOIN clause to display the names of the homeworlds
-        const query1 = `SELECT bsg_people.id, bsg_people.fname, bsg_people.lname, \
-            bsg_planets.name AS 'homeworld', bsg_people.age FROM bsg_people \
-            LEFT JOIN bsg_planets ON bsg_people.homeworld = bsg_planets.id;`;
-        const query2 = 'SELECT * FROM bsg_planets;';
-        const [people] = await db.query(query1);
-        const [homeworlds] = await db.query(query2);
-
-        // Render the bsg-people.hbs file, and also send the renderer
-        //  an object that contains our bsg_people and bsg_homeworld information
-        res.render('bsg-people', { people: people, homeworlds: homeworlds });
-    } catch (error) {
-        console.error('Error executing queries:', error);
-        // Send a generic error message to the browser
-        res.status(500).send(
-            'An error occurred while executing the database queries.'
-        );
-    }
-});
-
 app.get('/cust-orders', async function (req, res) {
     try {
         // Create and execute our queries
-        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        // In query1, we use two JOIN clauses to display the names of the Customers and Products
         const query1 = `
             SELECT Cust_Prod_Orders.cust_prod_order_id AS OrderNo, Customers.company_name AS Company, \ 
                 Products.name AS Product, Cust_Prod_Orders.price AS Price, Cust_Prod_Orders.quantity AS QTY, \ 
@@ -69,18 +46,18 @@ app.get('/cust-orders', async function (req, res) {
             LEFT JOIN Products 
                 ON Cust_Prod_Orders.product_id = Products.product_id;`;
 
-        // query3 is used to populate dropdown values
+        // query2 is used to populate Customers dropdown values
         const query2 = 'SELECT * FROM Customers;';
 
-        // query4 is used to populate dropdown values
+        // query3 is used to populate Products dropdown values
         const query3 = 'SELECT * FROM Products;';
         
         const [cust_orders] = await db.query(query1);
         const [customers] = await db.query(query2);
         const [products] = await db.query(query3);
 
-        // Render the bsg-people.hbs file, and also send the renderer
-        //  an object that contains our bsg_people and bsg_homeworld information
+        // Render the cust-orders.hbs file, and also send the renderer
+        //  an object that contains our Cust_Prod_Orders, Customers, and Products information
         res.render('cust-orders', { 
             cust_orders: cust_orders, 
             customers: customers, 
@@ -98,7 +75,7 @@ app.get('/cust-orders', async function (req, res) {
 app.get('/products', async function (req, res) {
     try {
         // Create and execute our queries
-        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        // In query1, we use a JOIN clause to display the names of Suppliers
         const query1 = `
             SELECT Products.product_id AS ProductID, Products.name AS Name, Products.description AS Description, \
                 Products.is_organic AS Organic, Suppliers.ranch AS Supplier
@@ -108,8 +85,8 @@ app.get('/products', async function (req, res) {
 
         const [products] = await db.query(query1);
 
-        // Render the bsg-people.hbs file, and also send the renderer
-        //  an object that contains our bsg_people and bsg_homeworld information
+        // Render the products.hbs file, and also send the renderer
+        //  an object that contains our Products information
         res.render('products', { 
             products: products 
         });
@@ -125,15 +102,15 @@ app.get('/products', async function (req, res) {
 app.get('/suppliers', async function (req, res) {
     try {
         // Create and execute our queries
-        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        // In query1, we are selecting from the Suppliers table
         const query1 = `
             SELECT Suppliers.supplier_id AS SupplierID, Suppliers.ranch AS Name, Suppliers.country AS Country, Suppliers.rep_name AS Representative, Suppliers.rep_email AS Email, Suppliers.rep_phone AS Phone
             FROM Suppliers;`;
 
         const [suppliers] = await db.query(query1);
 
-        // Render the bsg-people.hbs file, and also send the renderer
-        //  an object that contains our bsg_people and bsg_homeworld information
+        // Render the suppliers.hbs file, and also send the renderer
+        //  an object that contains our Suppliers information
         res.render('suppliers', { 
             suppliers: suppliers 
         });
@@ -149,7 +126,7 @@ app.get('/suppliers', async function (req, res) {
 app.get('/customers', async function (req, res) {
     try {
         // Create and execute our queries
-        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        // In query1, we use a JOIN clause to display the names of Loyalty Tiers
         const query1 = `
             SELECT Customers.customer_id AS CustomerID, Customers.company_name AS Name, Customers.address AS Address, Customers.is_local AS Local, Customers.buyer_name AS Buyer, Customers.buyer_email AS Email, Customers.buyer_phone AS Phone, Loyalty_Tiers.tier_name AS Tier
             FROM Customers
@@ -158,8 +135,8 @@ app.get('/customers', async function (req, res) {
 
         const [customers] = await db.query(query1);
 
-        // Render the bsg-people.hbs file, and also send the renderer
-        //  an object that contains our bsg_people and bsg_homeworld information
+        // Render the customers.hbs file, and also send the renderer
+        //  an object that contains our Customers information
         res.render('customers', { 
             customers: customers 
         });
@@ -175,7 +152,7 @@ app.get('/customers', async function (req, res) {
 app.get('/purch-orders', async function (req, res) {
     try {
         // Create and execute our queries
-        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        // In query1, we use a JOIN clause to display the names of Suppliers
         const query1 = `
             SELECT Purchase_Orders.purchase_order_id AS PurchaseOrderNo, Suppliers.ranch AS Supplier, Purchase_Orders.order_date AS Date, Purchase_Orders.total AS Total 
             FROM Purchase_Orders
@@ -184,8 +161,8 @@ app.get('/purch-orders', async function (req, res) {
 
         const [purch_orders] = await db.query(query1);
 
-        // Render the bsg-people.hbs file, and also send the renderer
-        //  an object that contains our bsg_people and bsg_homeworld information
+        // Render the purch-orders.hbs file, and also send the renderer
+        //  an object that contains our Purchase_Orders information
         res.render('purch-orders', { 
             purch_orders: purch_orders 
         });
@@ -201,17 +178,43 @@ app.get('/purch-orders', async function (req, res) {
 app.get('/loyalty-tiers', async function (req, res) {
     try {
         // Create and execute our queries
-        // In query1, we use a JOIN clause to display the names of the Customer Orders
+        // In query1, we are selecting from the Loyalty_Tiers table
         const query1 = `
             SELECT Loyalty_Tiers.loyalty_tier_id AS TierID, Loyalty_Tiers.tier_name AS Tier, Loyalty_Tiers.min_spend AS MinSpend, Loyalty_Tiers.discount AS Discount 
             FROM Loyalty_Tiers;`;
 
         const [loyalty_tiers] = await db.query(query1);
 
-        // Render the bsg-people.hbs file, and also send the renderer
-        //  an object that contains our bsg_people and bsg_homeworld information
+        // Render the loyalty-tiers.hbs file, and also send the renderer
+        //  an object that contains our Loyalty_Tiers information
         res.render('loyalty-tiers', { 
             loyalty_tiers: loyalty_tiers 
+        });
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
+app.get('/prod-purchases', async function (req, res) {
+    try {
+        // Create and execute our queries
+        // In query1, we use a JOIN clause to display Products
+        const query1 = `
+            SELECT Product_Purchases.prod_purchase_id AS PurchaseID, Products.name AS Product, Product_Purchases.purchase_order_id AS PO, Product_Purchases.cost AS Cost, Product_Purchases.quantity AS QTY 
+            FROM Product_Purchases
+            LEFT JOIN Products
+                ON Product_Purchases.product_id = Products.product_id;`;
+
+        const [prod_purchases] = await db.query(query1);
+
+        // Render the prod-purchases.hbs file, and also send the renderer
+        //  an object that contains our Product_Purchases information
+        res.render('prod-purchases', { 
+            prod_purchases: prod_purchases 
         });
     } catch (error) {
         console.error('Error executing queries:', error);
