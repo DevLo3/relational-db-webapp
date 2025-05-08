@@ -167,7 +167,9 @@ VALUES
 ------------------
 
 UPDATE Cust_Prod_Orders
-SET 
+SET
+    customer_id = %customer_id_from_customer_name,
+    product_id = %product_id_from_product_name,
     price = %price_input, 
     quantity = %quantity_input, 
     needs_delivery = %needs_delivery_selection, 
