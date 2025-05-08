@@ -24,7 +24,7 @@ CREATE OR REPLACE TABLE Customers
     buyer_phone varchar(20) UNIQUE,
     loyalty_tier_id int NOT NULL,
     PRIMARY KEY (customer_id),
-    FOREIGN KEY (loyalty_tier_id) REFERENCES Loyalty_Tiers(loyalty_tier_id)
+    FOREIGN KEY (loyalty_tier_id) REFERENCES Loyalty_Tiers(loyalty_tier_id) ON DELETE SET NULL
 );
 
 CREATE OR REPLACE TABLE Suppliers
@@ -46,7 +46,7 @@ CREATE OR REPLACE TABLE Products
     is_organic tinyint(1) NOT NULL DEFAULT 1,
     supplier_id int NOT NULL,
     PRIMARY KEY (product_id),
-    FOREIGN KEY (supplier_id) REFERENCES Suppliers(supplier_id)
+    FOREIGN KEY (supplier_id) REFERENCES Suppliers(supplier_id) ON DELETE SET NULL
 );
 
 CREATE OR REPLACE TABLE Purchase_Orders
@@ -69,8 +69,8 @@ CREATE OR REPLACE TABLE Cust_Prod_Orders
     needs_delivery tinyint(1) NOT NULL DEFAULT 0,
     recurring tinyint(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (cust_prod_order_id),
-    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE SET NULL
 );
 
 CREATE OR REPLACE TABLE Product_Purchases
@@ -81,8 +81,8 @@ CREATE OR REPLACE TABLE Product_Purchases
     cost decimal(10,2) NOT NULL,
     quantity int UNSIGNED NOT NULL DEFAULT 1,
     PRIMARY KEY (prod_purchase_id),
-    FOREIGN KEY (product_id) REFERENCES Products(product_id),
-    FOREIGN KEY (purchase_order_id) REFERENCES Purchase_Orders(purchase_order_id)
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE SET NULL,
+    FOREIGN KEY (purchase_order_id) REFERENCES Purchase_Orders(purchase_order_id) ON DELETE CASCADE
 );
 
 -- ~~~~~~~~~~~~~~~ Insert Example Data ~~~~~~~~~~~~~~~
