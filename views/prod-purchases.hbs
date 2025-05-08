@@ -1,0 +1,28 @@
+<h1>Product Purchases</h1>
+
+{{! READ table }}
+<table>
+    <thead>
+        {{! For the table header row, we print the DB attribute names }}
+        <tr>
+            {{#each prod_purchases.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    <tbody>
+        {{! For each row, print the id, fname, lname, homeworld and age }}
+        {{#each prod_purchases}}
+        <tr>
+            <td>{{this.PurchaseID}}</td>
+            <td>{{this.Product}}</td>
+            <td>{{this.PO}}</td>
+            <td>{{this.Cost}}</td>
+            <td>{{this.QTY}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
