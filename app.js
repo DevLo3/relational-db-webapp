@@ -215,7 +215,7 @@ app.get('/prod-purchases', async function (req, res) {
         // Create and execute our queries
         // In query1, we use a JOIN clause to display Products
         const query1 = `
-            SELECT Product_Purchases.prod_purchase_id AS PurchaseID, Products.name AS Product, Product_Purchases.purchase_order_id AS PO, Product_Purchases.cost AS Cost, Product_Purchases.quantity AS QTY 
+            SELECT Product_Purchases.prod_purchase_id AS PurchaseID, Products.name AS Product, Product_Purchases.purchase_order_id AS PurchaseOrder, Product_Purchases.cost AS Cost, Product_Purchases.quantity AS QTY 
             FROM Product_Purchases
             LEFT JOIN Products
                 ON Product_Purchases.product_id = Products.product_id;`;
