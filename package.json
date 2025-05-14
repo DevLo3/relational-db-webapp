@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "development": "npx nodemon app.js",
-    "production": "npx forever start app.js",
-    "stop_production": "npx forever stop app.js"
+    "production": "npx forever start --uid 'app' app.js",
+    "stop_production": "npx forever stop 'app'"
   },
   "author": "",
   "license": "ISC",
