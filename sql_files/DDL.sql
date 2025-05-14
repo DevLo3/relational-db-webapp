@@ -69,8 +69,8 @@ CREATE OR REPLACE TABLE Cust_Prod_Orders
     needs_delivery tinyint(1) NOT NULL DEFAULT 0,
     recurring tinyint(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (cust_prod_order_id),
-    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE CASCADE,
-    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE SET NULL
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE NO ACTION,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE NO ACTION
 );
 
 CREATE OR REPLACE TABLE Product_Purchases
