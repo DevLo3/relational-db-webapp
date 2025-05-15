@@ -239,7 +239,7 @@ app.get('/prod-purchases', async function (req, res) {
 // ########################################
 // ########## LISTENER
 
-app.listen(PORT, function () {
+app.listen(PORT, '0.0.0.0', function () {
     console.log(
         'Express started on http://localhost:' +
             PORT +
