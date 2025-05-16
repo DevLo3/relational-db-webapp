@@ -122,6 +122,8 @@ INNER JOIN Products ON Product_Purchases.product_id = Products.product_id;
 ------------------
 -- Get Data
 ------------------
+
+-- Get Data for table view
 SELECT
     Cust_Prod_Orders.cust_prod_order_id,
     Customers.company_name,
@@ -133,6 +135,17 @@ SELECT
 FROM Cust_Prod_Orders
 INNER JOIN Customers ON Cust_Prod_Orders.customer_id = Customers.customer_id
 INNER JOIN Products ON Cust_Prod_Orders.product_id = Products.product_id;
+
+-- Get Data for dropdowns
+
+-- customer dropdown
+SELECT company_name FROM Customers;
+
+-- product dropdown
+SELECT name FROM Products;
+
+-- order to update dropdown
+SELECT cust_prod_order_id FROM Cust_Prod_Orders;
 
 
 ------------------
