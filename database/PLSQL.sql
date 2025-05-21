@@ -35,8 +35,5 @@ BEGIN
     -- Display the ID of the last inserted customer order.
     SELECT LAST_INSERT_ID() AS 'new_id';
 
-    -- Example of how to get the ID of the newly created person:
-        -- CALL sp_CreatePerson('Theresa', 'Evans', 2, 48, @new_id);
-        -- SELECT @new_id AS 'New Person ID';
 END //
 DELIMITER ;
