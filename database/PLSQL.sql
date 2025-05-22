@@ -75,6 +75,6 @@ BEGIN
         quantity = p_quantity, 
         needs_delivery = p_delivery, 
         recurring = p_recurring
-    WHERE cust_prod_order_id = p_id
+    WHERE cust_prod_order_id = p_id;
 END //
 DELIMITER ;
