@@ -97,7 +97,7 @@ Prompt example: These two columns are binary, with 1 indicating "Yes" and 0 indi
 
 {{! UPDATE form }}
 <h2>Update an existing order</h2>
-<form class='cuForm' id='update_order_form'>
+<form class='cuForm' id='update_order_form' method='POST' action='/cust-orders/update'>
     <label for='update_order_id'>Order to update: </label>
     <select name='update_order_id' id='update_order_id' required>
         <option value='' disabled selected hidden>Select an order</option>
