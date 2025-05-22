@@ -256,7 +256,7 @@ app.post('/cust-orders/create', async function (req, res) {
             data.create_order_recur,
         ]);
 
-        console.log(`CREATE cust-orders. ID: ${rows.new_id} ` +
+        console.log(`CREATE cust-orders. Order ID: ${rows.new_id} ` +
             `Company: ${data.create_order_cust} Product: ${data.create_order_prod}`
         );
 
@@ -296,7 +296,7 @@ app.post('/cust-orders/update', async function (req, res) {
         const [[custRow]] = await db.query(query2, [data.update_order_cust]);
         const [[prodRow]] = await db.query(query3, [data.update_order_prod]);
 
-        console.log(`UPDATE cust-order. ID: ${data.update_order_id} ` +
+        console.log(`UPDATE cust-order. Order ID: ${data.update_order_id} ` +
             `Name: ${custRow.company_name} ${prodRow.prod_name}`
         );
 
