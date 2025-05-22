@@ -236,6 +236,41 @@ app.get('/prod-purchases', async function (req, res) {
     }
 });
 
+// CREATE ROUTES
+app.post('/cust-orders/create', async function (req, res) {
+    try {
+        // Parse frontend form information
+        let data = req.body;
+
+        // Create and execute our queries
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = `CALL sp_CreateCustOrder(?, ?, ?, ?, ?, ?, @new_id);`;
+
+        // Store ID of last inserted row
+        const [[[rows]]] = await db.query(query1, [
+            data.create_order_cust,
+            data.create_order_prod,
+            data.create_order_price,
+            data.create_order_qty,
+            data.create_order_deliv,
+            data.create_order_recur,
+        ]);
+
+        console.log(`CREATE cust-orders. ID: ${rows.new_id} ` +
+            `Company: ${data.create_person_cust} Product: ${data.create_person_prod}`
+        );
+
+        // Redirect the user to the updated webpage
+        res.redirect('/cust-orders');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
 // ########################################
 // ########## LISTENER
 
