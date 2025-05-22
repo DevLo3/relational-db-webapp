@@ -5,8 +5,8 @@ DROP PROCEDURE IF EXISTS sp_CreateCustOrder;
 
 DELIMITER //
 CREATE PROCEDURE sp_CreateCustOrder(
-    IN p_customer VARCHAR(50), 
-    IN p_product VARCHAR(50), 
+    IN p_customer INT, 
+    IN p_product INT, 
     IN p_price DECIMAL(10,2), 
     IN p_quantity INT,
     IN p_delivery TINYINT(1),
