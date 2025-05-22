@@ -257,7 +257,7 @@ app.post('/cust-orders/create', async function (req, res) {
         ]);
 
         console.log(`CREATE cust-orders. ID: ${rows.new_id} ` +
-            `Company: ${data.create_person_cust} Product: ${data.create_person_prod}`
+            `Company: ${data.create_order_cust} Product: ${data.create_order_prod}`
         );
 
         // Redirect the user to the updated webpage
