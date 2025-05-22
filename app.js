@@ -317,6 +317,32 @@ app.post('/cust-orders/update', async function (req, res) {
     }
 });
 
+// DELETE ROUTES
+app.post('/cust-orders/delete', async function (req, res) {
+    try {
+        // Parse frontend form information
+        let data = req.body;
+
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = `CALL sp_DeleteOrder(?);`;
+        await db.query(query1, [data.delete_order_id]);
+
+        console.log(`DELETE cust-order. Order ID: ${data.delete_person_id}, ` +
+            `Order Details: ${data.delete_cust_order}`
+        );
+
+        // Redirect the user to the updated webpage data
+        res.redirect('/cust-orders');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
 // ########################################
 // ########## LISTENER
 
