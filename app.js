@@ -245,6 +245,8 @@ app.post('/cust-orders/create', async function (req, res) {
         // Create and execute our queries
         // Using parameterized queries (Prevents SQL injection attacks)
         const query1 = `CALL sp_CreateCustOrder(?, ?, ?, ?, ?, ?, @new_id);`;
+        const query2 = 'SELECT company_name FROM Customers WHERE customer_id = ?;';
+        const query3 = 'SELECT name FROM Products WHERE product_id = ?;';
 
         // Store ID of last inserted row
         const [[[rows]]] = await db.query(query1, [
@@ -256,8 +258,12 @@ app.post('/cust-orders/create', async function (req, res) {
             data.create_order_recur,
         ]);
 
-        console.log(`CREATE cust-orders. Order ID: ${rows.new_id} ` +
-            `Company: ${data.create_order_cust} Product: ${data.create_order_prod}`
+        // Retrieve details about order being created
+        const [[custRow]] = await db.query(query2, [data.create_order_cust]);
+        const [[prodRow]] = await db.query(query3, [data.create_order_prod]);
+
+        console.log(`CREATE cust-order. Order ID: ${rows.new_id}, ` +
+            `Company: ${custRow.company_name}, Product: ${prodRow.name}`
         );
 
         // Redirect the user to the updated webpage
@@ -296,8 +302,8 @@ app.post('/cust-orders/update', async function (req, res) {
         const [[custRow]] = await db.query(query2, [data.update_order_cust]);
         const [[prodRow]] = await db.query(query3, [data.update_order_prod]);
 
-        console.log(`UPDATE cust-order. Order ID: ${data.update_order_id} ` +
-            `Name: ${custRow.company_name} ${prodRow.prod_name}`
+        console.log(`UPDATE cust-order. Order ID: ${data.update_order_id}, ` +
+            `Customer: ${custRow.company_name}, Product: ${prodRow.name}`
         );
 
         // Redirect the user to the updated webpage data
