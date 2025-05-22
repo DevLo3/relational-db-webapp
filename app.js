@@ -271,6 +271,46 @@ app.post('/cust-orders/create', async function (req, res) {
     }
 });
 
+// UPDATE ROUTES
+app.post('/cust-orders/update', async function (req, res) {
+    try {
+        // Parse frontend form information
+        const data = req.body;
+
+        // Create and execute our query
+        // Using parameterized queries (Prevents SQL injection attacks)
+        const query1 = 'CALL sp_UpdateCustOrder(?, ?, ?, ?, ?, ?, ?);';
+        const query2 = 'SELECT company_name FROM Customers WHERE customer_id = ?;';
+        const query3 = 'SELECT name FROM Products WHERE product_id = ?;';
+        await db.query(query1, [
+            data.update_order_id,
+            data.update_order_cust,
+            data.update_order_prod,
+            data.update_order_price,
+            data.update_order_qty,
+            data.update_order_deliv,
+            data.update_order_recur,
+        ]);
+        
+        // Retrieve details about order being updated
+        const [[custRow]] = await db.query(query2, [data.update_order_cust]);
+        const [[prodRow]] = await db.query(query3, [data.update_order_prod]);
+
+        console.log(`UPDATE cust-order. ID: ${data.update_order_id} ` +
+            `Name: ${custRow.company_name} ${prodRow.prod_name}`
+        );
+
+        // Redirect the user to the updated webpage data
+        res.redirect('/cust-orders');
+    } catch (error) {
+        console.error('Error executing queries:', error);
+        // Send a generic error message to the browser
+        res.status(500).send(
+            'An error occurred while executing the database queries.'
+        );
+    }
+});
+
 // ########################################
 // ########## LISTENER
 
