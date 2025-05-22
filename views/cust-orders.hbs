@@ -41,7 +41,7 @@ Prompt example: These two columns are binary, with 1 indicating "Yes" and 0 indi
             <td>{{#if this.Recurring}}Yes{{else}}No{{/if}}</td>
 
             {{! DELETE form }}
-            <form id='delete_person_form'>
+            <form id='delete_order_form' method='POST' action='/cust-orders/delete'>
                 <input type='hidden' name='delete_order_id' value='{{this.OrderNo}}' />
                 <input type='hidden' name='delete_cust_order' value='{{this.Company}} {{this.Product}} {{this.QTY}}' />
                 <td>
