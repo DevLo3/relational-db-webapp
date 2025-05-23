@@ -328,7 +328,7 @@ app.post('/cust-orders/delete', async function (req, res) {
         const query1 = `CALL sp_DeleteOrder(?);`;
         await db.query(query1, [data.delete_order_id]);
 
-        console.log(`DELETE cust-order. Order ID: ${data.delete_person_id}, ` +
+        console.log(`DELETE cust-order. Order ID: ${data.delete_order_id}, ` +
             `Order Details: ${data.delete_cust_order}`
         );
 
