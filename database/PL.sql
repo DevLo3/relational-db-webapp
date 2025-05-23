@@ -3,8 +3,8 @@
 
 Citations:
     
-Leveraged starter code from Web Application Technology Canvas exploration
-Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
+Leveraged starter code from "Implementing CUD operations in your app" exploration
+Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
 
 ****
 */
