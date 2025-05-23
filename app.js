@@ -343,6 +343,19 @@ app.post('/cust-orders/delete', async function (req, res) {
     }
 });
 
+// DB RESET ROUTE
+app.get('/reset-db', async function (req, res) {
+    try {
+        const query1 = 'CALL sp_load_steakdb();';
+      await db.query(query1);
+      res.redirect('/');
+    } catch (error) {
+      console.error("Error executing PL/SQL:", error);
+        // Send a generic error message to the browser
+      res.status(500).send("An error occurred while executing the PL/SQL.");
+    }
+});
+
 // ########################################
 // ########## LISTENER
 
