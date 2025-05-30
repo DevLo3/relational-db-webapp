@@ -358,7 +358,7 @@ app.get('/reset-db', async function (req, res) {
     try {
         const query1 = 'CALL sp_load_steakdb();';
       await db.query(query1);
-      res.redirect('/');
+      res.redirect(req.get('referer'));
     } catch (error) {
       console.error("Error executing PL/SQL:", error);
         // Send a generic error message to the browser

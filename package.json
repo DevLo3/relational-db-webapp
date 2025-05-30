@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "development": "npx nodemon app.js",
-    "production": "npx forever start --uid 'app' app.js",
+    "production": "npx forever start --append --uid 'app' app.js",
     "stop_production": "npx forever stop 'app'"
   },
   "author": "",
