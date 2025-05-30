@@ -8,6 +8,12 @@ Links:
     https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
     https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
 
+Citation for use of AI Tools:
+Date: 5/30/2025
+Summary of prompts used:
+"How can I add a confirmation modal to my DELETE button functionality?”
+AI Source URL: https://chat.openai.com/
+
 ****
 }}
 
@@ -40,15 +46,15 @@ Links:
             <td>{{#if this.Recurring}}Yes{{else}}No{{/if}}</td>
 
             {{! DELETE form }}
-            <form id='delete_order_form' method='POST' action='/cust-orders/delete'>
-                <input type='hidden' name='delete_order_id' value='{{this.OrderNo}}' />
-                <input type='hidden' name='delete_cust_order' value='{{this.Company}} {{this.Product}} {{this.QTY}}' />
-                <td>
-                    <button type='submit'>
+            <td>
+                <form method='POST' action='/cust-orders/delete' class='delete_order_form'>
+                    <input type='hidden' name='delete_order_id' value='{{this.OrderNo}}' />
+                    <input type='hidden' name='delete_cust_order' value='{{this.Company}} {{this.Product}} {{this.QTY}}' />
+                    <button type='button' class='delete-btn' data-orderid='{{this.OrderNo}}'>
                         Delete
                     </button>
-                </td>
-            </form>
+                </form>
+            </td>
         </tr>
         {{/each}}
     </tbody>
@@ -141,3 +147,35 @@ Links:
 
     <input type='submit' />
 </form>
+
+<div id="delete-confirm-modal" style="display: none; position: fixed; top: 30%; left: 30%; background-color: white; padding: 20px; border: 1px solid black;">
+    <p>Are you sure you want to delete this order?</p>
+    <button id="confirm-delete">Yes</button>
+    <button id="cancel-delete">No</button>
+</div>
+
+<script>
+    let currentForm = null;
+
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            currentForm = this.closest('form');
+            document.getElementById('delete-confirm-modal').style.display = 'block';
+        });
+    });
+
+    document.getElementById('confirm-delete').addEventListener('click', function () {
+        console.log("Attempting to submit form:", currentForm);
+        if (currentForm) {
+            document.getElementById('delete-confirm-modal').style.display = 'none';
+            currentForm.submit();
+        } else {
+            console.warn("No form is selected for deletion.");
+        }
+    });
+
+    document.getElementById('cancel-delete').addEventListener('click', function () {
+        document.getElementById('delete-confirm-modal').style.display = 'none';
+        currentForm = null;
+    });
+</script>
