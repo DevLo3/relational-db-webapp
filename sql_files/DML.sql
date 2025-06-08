@@ -1,3 +1,6 @@
+-- DML to manipulate the Equal Steakholders DB and populate it with sample data
+-- All original work
+
 ------------------------------------------------------------
 ------------------------------------------------------------
 -- Customers
