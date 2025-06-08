@@ -3,7 +3,9 @@ A project to create a web-based front end for a MySQL data with CRUD functionali
 
 NOTE: I excluded my local node_modules folder from this repo. This should be installed on your local machine within the same directory as the project as well, when testing/running the program.
 
-********* Below I will summarize project citations by project file *********
+**Below I will summarize project citations by project file**
+
+--
 
 **app.js**
 
@@ -21,12 +23,12 @@ Summary of prompts used:
 "Looking at the lines I have highlighted in my app.js file, can I put multiple queries in a single await db.query command so [[rows]] contains results from multiple queries?”
 AI Source URL: https://chat.openai.com/
 
-*** PL.sql ***
+**PL.sql**
 
 Adapted starter code from "Implementing CUD operations in your app" exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
 
-*** main.hbs ***
+**main.hbs**
 
 Adapted starter code from Web Application Technology Canvas exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
@@ -40,7 +42,7 @@ being reset, which is the code I currently have highlighted. Do I have to do thi
 or can I leverage another method?”
 AI Source URL: https://chat.openai.com/
 
-*** cust-order.hbs ***
+**cust-order.hbs**
 
 Adapted starter code from following Canvas explorations: 
     "Web Application Technology Canvas",
@@ -56,7 +58,7 @@ Summary of prompts used:
 "How can I properly add a confirmation modal to my DELETE button functionality?”
 AI Source URL: https://chat.openai.com/
 
-*** customers.hbs ***
+**customers.hbs**
     
 Adapted starter code from Web Application Technology Canvas exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
@@ -68,22 +70,22 @@ Summary of prompts used:
 Leveraged ChatGPT to assist with displaying boolean values (1s and 0s) as Yes/No via a conditional
 Prompt example: These two columns are binary, with 1 indicating "Yes" and 0 indicating "No". Is there a way to display the data outputted for this column in each row as "Yes" or "No" depending on whether the value is 1 or 0?
 
-*** home.hbs ***
+**home.hbs**
 
 Adapted starter code from Web Application Technology Canvas exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
-*** loyalty-tiers.hbs ***
+**loyalty-tiers.hbs**
 
 Adapted starter code from Web Application Technology Canvas exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
-*** prod-purchases.hbs ***
+**prod-purchases.hbs**
 
 Adapted starter code from Web Application Technology Canvas exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
-*** products.hbs ***
+**products.hbs**
 
 Adapted starter code from Web Application Technology Canvas exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
@@ -95,16 +97,16 @@ Summary of prompts used:
 Leveraged ChatGPT to assist with displaying boolean values (1s and 0s) as Yes/No via a conditional
 Prompt example: These two columns are binary, with 1 indicating "Yes" and 0 indicating "No". Is there a way to display the data outputted for this column in each row as "Yes" or "No" depending on whether the value is 1 or 0?
 
-*** purch-order.hbs ***
+**purch-order.hbs**
 
 Adapted starter code from Web Application Technology Canvas exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
-*** suppliers.hbs ***
+**suppliers.hbs**
 
 Adapted starter code from Web Application Technology Canvas exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
 
-*** style.css ***
+**style.css**
 
 Leveraged starter code from Web Application Technology Canvas exploration Link: https: //canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
