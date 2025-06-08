@@ -5,7 +5,7 @@ NOTE: I excluded my local node_modules folder from this repo. This should be ins
 
 ********* Below I will summarize project citations by project file *********
 
-*** app.js ***
+** app.js **
 
 Used starter code from following Canvas explorations for Express, DB, and HBS setup and Listener blocks. Adapted starter code for all js routes: 
     "Web Application Technology Canvas",
