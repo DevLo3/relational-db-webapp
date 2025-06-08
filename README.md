@@ -5,7 +5,7 @@ NOTE: I excluded my local node_modules folder from this repo. This should be ins
 
 **Below I will summarize project citations by project file**
 
---
+---
 
 **app.js**
 
