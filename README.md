@@ -13,7 +13,7 @@ Used starter code from following Canvas explorations for Express, DB, and HBS se
     "Web Application Technology Canvas",
     "Implementing CUD operations in your app"  
 
-Links: 
+Links:  
     https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
     https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
 
