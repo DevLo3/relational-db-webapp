@@ -8,15 +8,6 @@ Citations:
 Adapted starter code from "Implementing CUD operations in your app" exploration
 Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
 
-Foreign/Autocommit from Project Step 2:
-https://canvas.oregonstate.edu/courses/1999601/assignments/10006385?module_item_id=25352941
-
-CASCADE Rules adapted from MySQL CASCADE exploration:
-https://canvas.oregonstate.edu/courses/1999601/pages/exploration-mysql-cascade?module_item_id=25352939
-
-Table format adapted from Activities 4 and 6:
-https://canvas.oregonstate.edu/courses/1999601/pages/activity-4-creating-a-customer-object-table?module_item_id=25352912
-https://canvas.oregonstate.edu/courses/1999601/pages/activity-6-creating-transaction-and-category-tables?module_item_id=25352914
 
 ****
 */
