@@ -1,5 +1,5 @@
 
-# Full-Stack MySQL CRUD Application
+# Full-Stack Inventory Management (CRUD) Application
 
 This project was developed as part of the CS340: Introduction to Databases course at Oregon State University. It is a full-stack web application that interfaces with a relational MySQL database using Node.js, Express, and Handlebars. 
 
