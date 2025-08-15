@@ -1,25 +1,3 @@
-/*
-****
-
-Citations:
-    
-Leveraged and adapted starter code from following Canvas explorations: 
-    "Web Application Technology Canvas",
-    "Implementing CUD operations in your app"
-Links: 
-    https://canvas.oregonstate.edu/courses/1999601/pages/exploration-web-application-technology-2?module_item_id=25352948
-    https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
-
-Citation for use of AI Tools:
-Date: 5/19/2025
-Scope: line 312-313
-Summary of prompts used:
-"Looking at the lines I have highlighted in my app.js file, can I put multiple queries in a single await db.query command so [[rows]] contains results from multiple queries?”
-AI Source URL: https://chat.openai.com/
-
-****
-*/
-
 // ########################################
 // ########## SETUP
 

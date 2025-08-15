@@ -3,12 +3,6 @@
 
 Procedural language to properly implement CUD in the Equal Steakholders DB application
 
-Citations:
-    
-Adapted starter code from "Implementing CUD operations in your app" exploration
-Link: https://canvas.oregonstate.edu/courses/1999601/pages/exploration-implementing-cud-operations-in-your-app?module_item_id=25352968
-
-
 ****
 */
 
